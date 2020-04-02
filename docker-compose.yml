@@ -1,0 +1,41 @@
+# FOSSology Docker Compose file for postgres database
+# © Copyright Jeremiah C. Foster 2020 <jeremiah@jeremiahfoster.com>
+
+# Warning: the Docker specific variables will only have an effect if you
+# start the container with a data directory that is empty; any
+# pre-existing database will be left untouched on container startup.
+
+version: '3.7'
+postgres:
+  image: postgres
+  restart: always
+
+
+   environment:
+      DEBUG: false
+      POSTGRES_DB: fossology
+      POSTGRES_PASSWORD: fossy
+
+
+
+postgres:
+  restart: always
+  image:postgres
+  ports:
+    - "5432:5432"
+  environment:
+    - DEBUG=false
+
+    - DB_USER=
+    - DB_PASS=
+    - DB_NAME=
+    - DB_TEMPLATE=
+
+    - DB_EXTENSION=
+
+    - REPLICATION_MODE=
+    - REPLICATION_USER=
+    - REPLICATION_PASS=
+    - REPLICATION_SSLMODE=
+  volumes:
+    - /srv/docker/postgresql:/var/lib/postgresql
